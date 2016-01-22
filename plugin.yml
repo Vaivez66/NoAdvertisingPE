@@ -1,0 +1,12 @@
+name: NoAdvertisingPE
+main: Vaivez66\NoAdvertisingPE\NoAdvertising
+version: 1.0.0
+api: 1.12.0
+load: POSTWORLD
+authors: [Vaivez66]
+description: "Stop those advertiser!"
+commands:
+  na:
+    description: "Main command"
+    usage: "/na <add|remove|list> [domain]"
+  

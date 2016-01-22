@@ -1,0 +1,13 @@
+
+# Available types:
+#   - broadcast
+#   - block
+#   - kick
+type: block
+# The message that will send
+message: '{RED}Do not try to advertising!'
+# Blocked domain names
+domain:
+  - ".com"
+  - ".co"
+  - ".net"
