@@ -10,6 +10,6 @@ commands:
     description: "Main command"
     usage: "/na <add|remove|list> [domain]"
 permissions:
-no.advertising.pe:
-  description: "Permission to perform command"
-  default: op
+  no.advertising.pe:
+    description: "Permission to perform command"
+    default: op
