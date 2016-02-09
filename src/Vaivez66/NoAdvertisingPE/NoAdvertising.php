@@ -56,7 +56,7 @@ class NoAdvertising extends PluginBase implements Listener{
 	 * @return mixed
 	 */
 
-public function getMsg(){
+    public function getMsg(){
 		return $this->cfg->get("message");
 	}
 
