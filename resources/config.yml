@@ -13,5 +13,5 @@ domain:
   - ".co"
   - ".net"
 allowed.domain:
-  - "google.com"
+  - "yourserver.com"
   - "pocketmine.net"
