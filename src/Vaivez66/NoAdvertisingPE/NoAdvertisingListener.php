@@ -17,10 +17,16 @@ class NoAdvertisingListener extends PluginBase implements Listener{
         $p = $event->getPlayer();
         $msg = $event->getMessage();
         $domain = $this->plugin->getDomain();
+        $allowed = $this->plugin->getAllowedDomain();
         $type = $this->plugin->getType();
         $m = $this->plugin->getMsg();
         $m = str_replace("{player}", $p->getName(), $m);
         $m = $this->plugin->getFormat()->translate($m);
+        foreach($allowed as $a){
+            if((preg_match("/^{$a}/i", $msg)) || (stripos($msg, $a) == true)){
+                return;
+            }
+        }
         foreach($domain as $d){
             if((preg_match("/^{$d}/i", $msg)) || (stripos($msg, $d) == true)){
                 switch($type){

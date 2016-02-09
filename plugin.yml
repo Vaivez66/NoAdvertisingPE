@@ -1,6 +1,6 @@
 name: NoAdvertisingPE
 main: Vaivez66\NoAdvertisingPE\NoAdvertising
-version: 1.0.0
+version: 1.0.1
 api: 1.12.0
 load: POSTWORLD
 authors: [Vaivez66]
@@ -9,4 +9,8 @@ commands:
   na:
     description: "Main command"
     usage: "/na <add|remove|list> [domain]"
+permissions:
+  no.advertising.pe:
+    description: "Permission to perform command"
+    default: op
   

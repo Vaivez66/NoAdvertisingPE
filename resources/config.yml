@@ -5,9 +5,13 @@
 #   - kick
 type: block
 # The message that will send
+# You can use {player} to mention their name
 message: '{RED}Do not try to advertising!'
 # Blocked domain names
 domain:
   - ".com"
   - ".co"
   - ".net"
+allowed.domain:
+  - "google.com"
+  - "pocketmine.net"

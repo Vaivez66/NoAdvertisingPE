@@ -36,6 +36,15 @@ class NoAdvertising extends PluginBase implements Listener{
 	}
 
 	/**
+	 * @return array
+	 */
+
+	public function getAllowedDomain(){
+		$allowed = (array) $this->cfg->get("allowed.domain");
+		return $allowed;
+	}
+
+	/**
 	 * @return mixed
 	 */
 
