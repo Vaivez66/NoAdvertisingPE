@@ -13,3 +13,6 @@ permissions:
   no.advertising.pe:
     description: "Permission to perform command"
     default: op
+  no.advertising.pe.bypass:
+    description: "Permission to bypass from blocking"
+    default: op

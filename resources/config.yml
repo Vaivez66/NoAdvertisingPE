@@ -9,9 +9,18 @@ type: block
 message: '{RED}Do not try to advertising!'
 # Blocked domain names
 domain:
+  - ".me"
   - ".com"
-  - ".co"
   - ".net"
+# The domains that allowed to use
 allowed.domain:
   - "yourserver.com"
   - "pocketmine.net"
+# If true, it will detect a sign
+detect.sign: true
+# Lines that will change if player advertise on sign
+lines:
+  - '============='
+  - 'No Advertising!'
+  - '============='
+  - ''
