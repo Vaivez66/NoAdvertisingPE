@@ -24,3 +24,7 @@ lines:
   - 'No Advertising!'
   - '============='
   - ''
+# The command that will protected from advertising
+blocked.cmd:
+  - "/me"
+  - "/tell"
