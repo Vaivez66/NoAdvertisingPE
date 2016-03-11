@@ -2,14 +2,13 @@
 
 namespace Vaivez66\NoAdvertisingPE;
 
-use pocketmine\Server;
-use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerChatEvent;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\utils\TextFormat as TF;
 
-class NoAdvertisingListener extends PluginBase implements Listener{
+class NoAdvertisingListener implements Listener{
 
     public function __construct(NoAdvertising $plugin){
         $this->plugin = $plugin;
@@ -28,12 +27,12 @@ class NoAdvertisingListener extends PluginBase implements Listener{
             return;
         }
         foreach($allowed as $a){
-            if((preg_match("/^{$a}/i", $msg)) || (stripos($msg, $a) == true)){
+            if(stripos($msg, $a) !== false){
                 return;
             }
         }
         foreach($domain as $d){
-            if((preg_match("/^{$d}/i", $msg)) || (stripos($msg, $d) == true)){
+            if((stripos($msg, $d) !== false) || (preg_match("/[0-9]+\.[0-9]+/i", $msg))){
                 switch($type){
                     case "broadcast":
                         $event->setCancelled(true);
@@ -61,17 +60,40 @@ class NoAdvertisingListener extends PluginBase implements Listener{
             }
             foreach($lines as $line){
                 foreach($this->plugin->getAllowedDomain() as $a){
-                    if((preg_match("/^{$a}/i", $line)) || (stripos($line, $a) == true)){
+                    if(stripos($line, $a) !== false){
                         return;
                     }
                 }
                 foreach($this->plugin->getDomain() as $d){
-                    if((preg_match("/^{$d}/i", $line)) || (stripos($line, $d) == true)) {
+                    if(stripos($line, $d) !== false) {
                         for ($i = 0; $i <= 3; $i++) {
                             $event->setLine($i, $sign[$i]);
                         }
                         $p->sendMessage(TF::RED . 'Do not try to advertising, ' . $p->getName());
                     }
+                }
+            }
+        }
+    }
+
+    public function onCmd(PlayerCommandPreprocessEvent $event){
+        $msg = explode(' ', $event->getMessage());
+        $cmd = array_shift($msg);
+        $p = $event->getPlayer();
+        $m = implode(' ', $msg);
+        if ($p->hasPermission('no.advertising.pe.bypass')) {
+            return;
+        }
+        foreach ($this->plugin->getAllowedDomain() as $a) {
+            if (stripos($m, $a) !== false) {
+                return;
+            }
+        }
+        if(in_array($cmd, $this->plugin->getBlockedCmd())) {
+            foreach ($this->plugin->getDomain() as $d) {
+                if (stripos($m, $d) !== false) {
+                    $event->setCancelled(true);
+                    $p->sendMessage(TF::RED . 'Do not try to advertising with ' . $cmd . ', ' . $p->getName());
                 }
             }
         }
