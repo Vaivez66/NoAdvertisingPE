@@ -3,16 +3,11 @@
 namespace Vaivez66\NoAdvertisingPE;
 
 use pocketmine\plugin\PluginBase;
-use pocketmine\event\Listener;
 use pocketmine\Player;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-use pocketmine\command\CommandExecutor;
-use pocketmine\Server;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as TF;
 
-class NoAdvertising extends PluginBase implements Listener{
+class NoAdvertising extends PluginBase{
 
     public $cfg;
     private $format;
@@ -57,7 +52,7 @@ class NoAdvertising extends PluginBase implements Listener{
      */
 
     public function getMsg(){
-		return $this->cfg->get("message");
+	return $this->cfg->get("message");
     }
 
     /**
@@ -67,13 +62,21 @@ class NoAdvertising extends PluginBase implements Listener{
     public function detectSign(){
 	return $this->cfg->get('detect.sign') === true;
     }
-    
+
     /**
      * @return array
      */
 
     public function getSignLines(){
 	return (array) $this->cfg->get('lines');
+    }
+
+    /**
+     * @return array
+     */
+
+    public function getBlockedCmd(){
+	return (array) $this->cfg->get('blocked.cmd');
     }
 
     /**
