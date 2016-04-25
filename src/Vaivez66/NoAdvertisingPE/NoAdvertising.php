@@ -108,7 +108,7 @@ class NoAdvertising extends PluginBase{
     	$domain = $this->getDomain();
     	$key = array_search($name, $domain);
     	if($key === false){
-    	    $p->sendMessage(TF::RED . "That domain is not exist!");
+    	    $p->sendMessage(TF::RED . "That domain does not exist!");
     	    return false;
     	}
     	unset($domain[$key]);
