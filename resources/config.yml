@@ -6,7 +6,7 @@
 type: block
 # The message that will send
 # You can use {player} to mention their name
-message: '{RED}Do not try to advertising!'
+message: '{RED}Please do not use this server as a dating service.!'
 # Blocked domain names
 domain:
   - ".me"
